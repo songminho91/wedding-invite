@@ -107,7 +107,7 @@ const LetteringSettings = () => {
 
 
       {/* 우측 설정 */}
-       <div className="w-full max-w-[360px] text-sm">
+       <div className="w-full max-w-[160px] sm:max-w-[360px] text-sm">
         {/* 안내 문구 */}
         <div
           className={`absolute -top-6 left-0 w-full text-center text-red-500 text-sm transition-opacity duration-500 ${isDisabled ? "opacity-100" : "opacity-0"
