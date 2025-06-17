@@ -6,12 +6,13 @@ import Img2 from "../components/Img2";
 import FamilyInfoView from "./FamilyInfoView";
 import CalendarView from "./CalendarView";
 import { motion } from "framer-motion";
+import "../styles/PreviewComponents.css"; // ✅ 스냅 CSS 포함
 
 const getFontSizeByFont = (font) => {
   if (font.includes("BMEuljiro10yearslater") || font.includes("Nanum Myeongjo")) {
-    return "text-[1.5rem]";
+    return "1.5rem";
   }
-  return "text-base"; // Tailwind 기준
+  return "1rem";
 };
 
 function PreviewComponents({
@@ -25,37 +26,85 @@ function PreviewComponents({
 }) {
   const sections = [];
 
-  const pushSection = (key, Component) => {
+  if (showMainPhoto) {
     sections.push(
       <motion.section
-        key={key}
+        className="scroll-section"
+        key="mainPhoto"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        className="w-full max-w-2xl mx-auto px-4 py-6"
+        transition={{ duration: 1 }}
       >
-        <Component />
+        <MainPhoto full={true} /> {/* ✅ 이 부분만 fullscreen으로 */}
       </motion.section>
     );
-  };
+  }
 
-  if (showMainPhoto) pushSection("mainPhoto", MainPhoto);
-  if (showMainText) pushSection("mainText", MainText);
-  if (showFamilyInfoView) pushSection("familyInfo", FamilyInfoView);
-  if (showCalendarView) pushSection("calendar", CalendarView);
+
+  if (showMainText) {
+    sections.push(
+      <motion.section
+        className="scroll-section"
+        key="mainText"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <MainText />
+      </motion.section>
+    );
+  }
+
+  if (showFamilyInfoView) {
+    sections.push(
+      <motion.section
+        className="scroll-section"
+        key="familyInfo"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <FamilyInfoView />
+      </motion.section>
+    );
+  }
+
+  if (showCalendarView) {
+    sections.push(
+      <motion.section
+        className="scroll-section"
+        key="calendar"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <CalendarView />
+      </motion.section>
+    );
+  }
+
   if (showImg1 || showImg2) {
-    pushSection("images", () => (
-      <>
+    sections.push(
+      <motion.section
+        className="scroll-section"
+        key="images"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         {showImg1 && <Img1 />}
         {showImg2 && <Img2 />}
-      </>
-    ));
+      </motion.section>
+    );
   }
 
   return (
     <div
-      className={`flex flex-col items-center w-full min-h-screen py-6 bg-gray-50 ${getFontSizeByFont(previewFont)}`}
-      style={{ fontFamily: previewFont }}
+      className="scroll-container"
+      style={{
+        fontFamily: previewFont,
+        fontSize: getFontSizeByFont(previewFont),
+      }}
     >
       {sections}
     </div>

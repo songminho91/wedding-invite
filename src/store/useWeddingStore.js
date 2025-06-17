@@ -48,6 +48,13 @@ export const useWeddingStore = create((set) => ({
   previewFont: "'SCoreDream', sans-serif",
   setPreviewFont: (font) => set({ previewFont: font }),
 
+  //레터링 텍스트 폰트사이즈
+  fontSize: 5, // 레터링용 (% 단위)
+  setFontSize: (val) => set({ fontSize: val }),
+
+  additionalFontSize: 5, // 추가 텍스트용
+  setAdditionalFontSize: (val) => set({ additionalFontSize: val }),
+
   // ✨ 레터링 설정
   letteringText: '',
   setLetteringText: (text) => set({ letteringText: text }),
@@ -55,9 +62,28 @@ export const useWeddingStore = create((set) => ({
   letteringColor: '#000000',
   setLetteringColor: (color) => set({ letteringColor: color }),
 
-  letteringPosition: { x: 50, y: 10 }, // 퍼센트 기준 (중앙: 50%)
+  letteringPosition: { x: 50, y: 10 },
   setLetteringPosition: (pos) => set({ letteringPosition: pos }),
 
   letteringFont: "'Pretendard Variable', sans-serif",
   setLetteringFont: (font) => set({ letteringFont: font }),
+
+  // ➕ 추가 텍스트 설정
+  additionalText: '',
+  setAdditionalText: (text) => set({ additionalText: text }),
+
+  additionalTextPosition: { x: 50, y: 20 },
+  setAdditionalTextPosition: (pos) => set({ additionalTextPosition: pos }),
+
+  additionalTextFont: "'Pretendard Variable', sans-serif",
+  setAdditionalTextFont: (font) => set({ additionalTextFont: font }),
+
+  additionalTextColor: '#000000',
+  setAdditionalTextColor: (color) => set({ additionalTextColor: color }),
+
+  additionalTextBold: false,
+  setAdditionalTextBold: (bold) => set({ additionalTextBold: bold }),
+
+  additionalTextItalic: false,
+  setAdditionalTextItalic: (italic) => set({ additionalTextItalic: italic }),
 }));

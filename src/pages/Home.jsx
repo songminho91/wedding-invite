@@ -79,7 +79,7 @@ function Home() {
     <>
       <h1 className="text-xl font-bold p-4">Start</h1>
 
-      <div className="space-y-6 p-4">
+      <div className="space-y-1 p-4">
         {toggleList.map(({ key, label, component, resetFont }) => (
           <div key={key}>
             {/* ✅ 토글 + 바로 아래 컴포넌트 */}
@@ -127,7 +127,7 @@ function Home() {
             ← 뒤로가기
           </button>
 
-          <div className="pt-16 px-4 pb-4"> {/* ✅ 버튼 영역 안 가리게 패딩 추가 */}
+          <div > {/* ✅ 버튼 영역 안 가리게 패딩 추가 */}
             <PreviewComponents
               showMainPhoto={toggles.showMainPhoto}
               showMainText={toggles.showMainText}
